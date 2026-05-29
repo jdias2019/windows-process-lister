@@ -1,0 +1,11 @@
+taskkill /f /im plister.exe
+cl process_lister.c /EHsc /Fe:plister.exe user32.lib gdi32.lib psapi.lib -DPSAPI_VERSION=1
+
+if ($LASTEXITCODE -eq 0) {
+    Write-Host "compiled to -> plister.exe"
+    .\plister.exe
+
+} else {
+    Write-Host "compile error"
+    exit 1
+}
